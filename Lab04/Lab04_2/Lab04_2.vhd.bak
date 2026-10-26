@@ -1,0 +1,40 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity Lab04_2 is
+    Port ( SW : in STD_LOGIC_VECTOR(5 downto 0);
+           KEY : in STD_LOGIC_VECTOR(1 downto 0);
+           LEDG : out STD_LOGIC_VECTOR(3 downto 0);
+           HEX0 : out STD_LOGIC_VECTOR(6 downto 0);
+           HEX1 : out STD_LOGIC_VECTOR(6 downto 0)
+    );
+end Lab04_2;
+
+architecture Behavioral of Lab04_2 is
+    signal A : STD_LOGIC_VECTOR(5 downto 3);
+    signal B : STD_LOGIC_VECTOR(2 downto 0);
+    signal SUM : STD_LOGIC_VECTOR(3 downto 0);
+begin
+    process(KEY)
+    begin
+        if KEY = "00" then
+            LEDG <= "0000";
+            HEX0 <= "0000000";
+            HEX1 <= "0000000";
+
+        elsif KEY = "01" then
+            LEDG <= "0000";
+            HEX0 <= "1111111";
+            HEX1 <= "1111111";
+
+        elsif KEY = "10" then
+            LEDG <= "1111";
+            HEX0 <= "1111111";
+            HEX1 <= "1111111";
+        else
+            LEDG <= "0000";
+            HEX0 <= "1111111";
+            HEX1 <= "1111111";
+        end if;
+    end process;
+end Behavioral;   

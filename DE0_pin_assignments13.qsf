@@ -1,0 +1,52 @@
+#####################################################################
+# DE0  9-bit Processor Lab – essential I/O pin map (Cyclone III EP3C25F324C6)
+# IO Standard：3.3-V LVTTL
+#####################################################################
+
+# Slide Switches  (SW9 = Run, SW8..0 = DIN[8:0])
+set_location_assignment PIN_J6 -to SW[0]
+set_location_assignment PIN_H5 -to SW[1]
+set_location_assignment PIN_H6 -to SW[2]
+set_location_assignment PIN_G4 -to SW[3]
+set_location_assignment PIN_G5 -to SW[4]
+set_location_assignment PIN_J7 -to SW[5]
+set_location_assignment PIN_H7 -to SW[6]
+set_location_assignment PIN_E3 -to SW[7]
+set_location_assignment PIN_E4 -to SW[8]
+set_location_assignment PIN_D2 -to SW[9]
+
+# Push-buttons (KEY1 = Resetn, KEY0 = Clock；KEY2 可留作備用)
+set_location_assignment PIN_H2 -to KEY[0]      ;# Clock 按鈕 (Button2)
+set_location_assignment PIN_G3 -to KEY[1]      ;# Resetn  (Button1 active-low)
+set_location_assignment PIN_F1 -to KEY[2]      ;# 未用
+
+# Green LEDs  (LEDG9 = Done, LEDG8..0 = Bus[8:0])
+set_location_assignment PIN_J1 -to LEDG[0]
+set_location_assignment PIN_J2 -to LEDG[1]
+set_location_assignment PIN_J3 -to LEDG[2]
+set_location_assignment PIN_H1 -to LEDG[3]
+set_location_assignment PIN_F2 -to LEDG[4]
+set_location_assignment PIN_E1 -to LEDG[5]
+set_location_assignment PIN_C1 -to LEDG[6]
+set_location_assignment PIN_C2 -to LEDG[7]
+set_location_assignment PIN_B2 -to LEDG[8]
+set_location_assignment PIN_B1 -to LEDG[9]
+
+# Seven-segment display HEX3 (顯示 FSM 狀態 0‥3；僅用到段 0-6)
+set_location_assignment PIN_B18 -to HEX3[0]    ;# a
+set_location_assignment PIN_F15 -to HEX3[1]    ;# b
+set_location_assignment PIN_A19 -to HEX3[2]    ;# c
+set_location_assignment PIN_B19 -to HEX3[3]    ;# d
+set_location_assignment PIN_C19 -to HEX3[4]    ;# e
+set_location_assignment PIN_D19 -to HEX3[5]    ;# f
+set_location_assignment PIN_G15 -to HEX3[6]    ;# g
+# HEX3[7] = DP，可不接；若要關閉請設為輸出高阻或保留未用
+#set_location_assignment PIN_G16 -to HEX3[7]
+
+# ──────────────────────────────────────────────────────────────────
+# 全域 I/O 標準（DE0 板所有 user-I/O 皆為 3.3 V）
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[*]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[*]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDG[*]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[*]
+#####################################################################

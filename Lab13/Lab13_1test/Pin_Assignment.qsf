@@ -1,0 +1,37 @@
+# SW
+set_location_assignment PIN_A13  -to SW[0]
+set_location_assignment PIN_A14  -to SW[1]
+set_location_assignment PIN_B14  -to SW[2]
+set_location_assignment PIN_B13  -to SW[3]
+set_location_assignment PIN_C13  -to SW[4]
+set_location_assignment PIN_C14  -to SW[5]
+set_location_assignment PIN_D14  -to SW[6]
+set_location_assignment PIN_D13  -to SW[7]
+set_location_assignment PIN_E13  -to SW[8]
+set_location_assignment PIN_F14  -to SW[9]
+
+# KEY
+set_location_assignment PIN_G20  -to KEY[0]
+set_location_assignment PIN_F19  -to KEY[1]
+set_location_assignment PIN_D19  -to KEY[2]
+
+# LEDG
+set_location_assignment PIN_N17  -to LEDG[0]
+set_location_assignment PIN_R17  -to LEDG[1]
+set_location_assignment PIN_T17  -to LEDG[2]
+set_location_assignment PIN_U17  -to LEDG[3]
+set_location_assignment PIN_V17  -to LEDG[4]
+set_location_assignment PIN_W17  -to LEDG[5]
+set_location_assignment PIN_Y17  -to LEDG[6]
+set_location_assignment PIN_A18  -to LEDG[7]
+set_location_assignment PIN_B18  -to LEDG[8]
+set_location_assignment PIN_C18  -to LEDG[9]
+
+# HEX3 (共陽 a…g, active-low)
+set_location_assignment PIN_P14  -to HEX3[0]  # segment a
+set_location_assignment PIN_N14  -to HEX3[1]  # b
+set_location_assignment PIN_R16  -to HEX3[2]  # c
+set_location_assignment PIN_T16  -to HEX3[3]  # d
+set_location_assignment PIN_U16  -to HEX3[4]  # e
+set_location_assignment PIN_P16  -to HEX3[5]  # f
+set_location_assignment PIN_R15  -to HEX3[6]  # g

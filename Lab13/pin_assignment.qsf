@@ -1,0 +1,87 @@
+# Quartus II Settings File
+# Project Name: simple_processor_DE0
+
+#============================================================
+# GLOBAL ASSIGNMENTS
+#============================================================
+set_global_assignment -name FAMILY "Cyclone III"
+set_global_assignment -name DEVICE EP3C16F484C6 # Or EP3C16F484C6N, check your board
+set_global_assignment -name TOP_LEVEL_ENTITY DE0_TOP
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION <Your Quartus Version> # e.g., 13.0.1
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "<Date Time>" # e.g., "10:00:00  MAY 20, 2023"
+set_global_assignment -name LAST_QUARTUS_VERSION <Your Quartus Version> # e.g., 13.0.1
+set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
+
+#============================================================
+# VHDL FILE ASSIGNMENTS
+#============================================================
+set_global_assignment -name VHDL_FILE DE0_TOP.vhd
+set_global_assignment -name VHDL_FILE proc.vhd
+set_global_assignment -name VHDL_FILE dec3to8.vhd
+set_global_assignment -name VHDL_FILE regn.vhd
+
+#============================================================
+# PIN ASSIGNMENTS
+#============================================================
+
+# Clock Input (Not using CLOCK_50 from board, using KEY as per req)
+# set_location_assignment PIN_G21 -to CLOCK_50 # If you were using board's 50MHz clock
+
+# Switches (SW9 for Run, SW8-0 for DIN)
+set_location_assignment PIN_D2 -to SW[9]
+set_location_assignment PIN_E4 -to SW[8]
+set_location_assignment PIN_E3 -to SW[7]
+set_location_assignment PIN_H7 -to SW[6]
+set_location_assignment PIN_J7 -to SW[5]
+set_location_assignment PIN_G5 -to SW[4]
+set_location_assignment PIN_G4 -to SW[3]
+set_location_assignment PIN_H6 -to SW[2]
+set_location_assignment PIN_H5 -to SW[1]
+set_location_assignment PIN_J6 -to SW[0]
+
+# Keys (KEY1 for Resetn, KEY2 for Clock)
+# KEY[0] is not used by processor but is part of the KEY vector in DE0_TOP
+set_location_assignment PIN_H2 -to KEY[0] # Not used by processor, but assign if KEY is (3 downto 0)
+set_location_assignment PIN_G3 -to KEY[1] # Resetn (Active Low)
+set_location_assignment PIN_F1 -to KEY[2] # Clock input
+# KEY[3] is usually available too, if KEY vector is defined up to 3.
+
+# LEDs (LEDG9 for Done, LEDG8-0 for BusWires)
+set_location_assignment PIN_B1 -to LEDG[9] # Done
+set_location_assignment PIN_B2 -to LEDG[8]
+set_location_assignment PIN_C2 -to LEDG[7]
+set_location_assignment PIN_C1 -to LEDG[6]
+set_location_assignment PIN_E1 -to LEDG[5]
+set_location_assignment PIN_F2 -to LEDG[4]
+set_location_assignment PIN_H1 -to LEDG[3]
+set_location_assignment PIN_J3 -to LEDG[2]
+set_location_assignment PIN_J2 -to LEDG[1]
+set_location_assignment PIN_J1 -to LEDG[0]
+
+# HEX3 Display (for current state)
+# Segments a,b,c,d,e,f,g -> HEX3[0]...HEX3[6]
+set_location_assignment PIN_B18 -to HEX3[0] # Segment 'a'
+set_location_assignment PIN_F15 -to HEX3[1] # Segment 'b'
+set_location_assignment PIN_A19 -to HEX3[2] # Segment 'c'
+set_location_assignment PIN_B19 -to HEX3[3] # Segment 'd'
+set_location_assignment PIN_C19 -to HEX3[4] # Segment 'e'
+set_location_assignment PIN_D19 -to HEX3[5] # Segment 'f'
+set_location_assignment PIN_G15 -to HEX3[6] # Segment 'g'
+# Note: Your provided pin list for HEX3 had HEX3[7] which is usually the decimal point (dp).
+# If HEX3 is defined as (6 DOWNTO 0), you only need 7 pins. If it includes dp, it's (7 DOWNTO 0).
+# My DE0_TOP uses (6 DOWNTO 0) for HEX3.
+
+#============================================================
+# COMPILER SETTINGS
+#============================================================
+# Add any specific compiler settings if needed, e.g., VHDL version
+# set_global_assignment -name VHDL_INPUT_VERSION VHDL_2008 # (If using VHDL-2008 features)
+# By default, it's likely VHDL_1993 or VHDL_2002. The provided code should be fine with older standards.
+
+#============================================================
+# POWER PRESETS (from your list)
+#============================================================
+# set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+# set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+
+# End of .qsf file
